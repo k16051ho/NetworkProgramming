@@ -22,6 +22,7 @@ void commun(int sock){
     printf("%s\n",buf);
     if((send(sock,buf,strlen(buf),0))!=strlen(buf))
         DieWithError("send()sent a message of unexpected bytes");
+}
 
 int main(int argc, char **argv) {
     int servSock = socket(PF_INET,SOCK_STREAM,0);
@@ -33,7 +34,7 @@ int main(int argc, char **argv) {
     struct sockaddr_in servAddress;
     servAddress.sin_family = AF_INET;
     servAddress.sin_addr.s_addr = htonl(INADDR_ANY);
-    servAddress.sin_port = htons(10001);
+    servAddress.sin_port = htons(80);
     bind(servSock,(struct sockaddr *)&servAddress,sizeof(servAddress));
     listen(servSock,5);
     while(1){
@@ -43,4 +44,5 @@ int main(int argc, char **argv) {
     }
     close(servSock);
     return 0;
+	
 }
