@@ -22,6 +22,7 @@ void commun(int sock){
     printf("%s\n",buf);
     if((send(sock,buf,strlen(buf),0))!=strlen(buf))
         DieWithError("send()sent a message of unexpected bytes");
+}
 
 int main(int argc, char **argv) {
     int servSock = socket(PF_INET,SOCK_STREAM,0);
