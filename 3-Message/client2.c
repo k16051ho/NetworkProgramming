@@ -130,6 +130,7 @@ void commun(int sock)
         printf("番号が確認できませんでした。\n");
         return;
     }
+    printf("%lu バイト\n", sizeof(char) * strlen(msg));
 
     // 送信処理
     if (send(sock, msg, strlen(msg), 0) != strlen(msg))
